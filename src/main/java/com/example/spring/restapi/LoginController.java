@@ -15,6 +15,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @RequiredArgsConstructor
+
 @RequestMapping("/whitelist")
 public class LoginController {
     final UserRepo userRepo;
