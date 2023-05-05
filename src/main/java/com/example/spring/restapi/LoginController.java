@@ -30,7 +30,8 @@ public class LoginController {
         user.setUsername(registerDTO.getUsername());
         user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         user.setRole(rolesRepo.findCustomRoleByName("User"));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return new ResponseEnt
+        ity<>(HttpStatus.CREATED);
     }
     @GetMapping("/allUsers")
     List<CustomUser> allUsers(){
