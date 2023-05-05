@@ -23,15 +23,14 @@ public class LoginController {
     final PasswordEncoder passwordEncoder;
     @PostMapping("/register")
     ResponseEntity<String> registerUser(@RequestBody RegisterDTO registerDTO) {
-        if (userRepo.existsCustomUserByUsername(registerDTO.getUsername())){
-         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if(userRepo.existsCustomUserByUsername(registerDTO.getUsername())){
+            return new ResponseEntity<>("Username Already Exists", HttpStatus.BAD_REQUEST);
         }
-        CustomUser user=new CustomUser();
+        CustomUser user= new CustomUser();
         user.setUsername(registerDTO.getUsername());
         user.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
         user.setRole(rolesRepo.findCustomRoleByName("User"));
-        return new ResponseEnt
-        ity<>(HttpStatus.CREATED);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @GetMapping("/allUsers")
     List<CustomUser> allUsers(){
