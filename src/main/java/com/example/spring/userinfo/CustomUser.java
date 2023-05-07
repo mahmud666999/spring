@@ -58,4 +58,8 @@ public class CustomUser implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public String getRoleByName() {
+        return role.getName();
+    }
 }
