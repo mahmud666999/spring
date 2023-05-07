@@ -7,8 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -25,8 +25,7 @@ public class CustomUser implements UserDetails {
     CustomRole role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> list=Arrays.asList(new SimpleGrantedAuthority(role.getName()));
-        return list;
+        return Collections.singletonList(new SimpleGrantedAuthority(role.getName()));
     }
 
     @Override
